@@ -1,0 +1,30 @@
+name: 'Limrun Preview'
+description: 'Upload an app build and post a live simulator preview link on pull requests'
+inputs:
+  app-path:
+    description: 'Path to the build artifact. For iOS: the .app bundle directory. For Android: the .apk or .aab file. Not needed on PR close.'
+    required: false
+  api-key:
+    description: 'Limrun API key. Pass as a secret: ${{ secrets.LIMRUN_API_KEY }}'
+    required: true
+  platform:
+    description: 'Target platform: ios or android'
+    required: false
+    default: 'ios'
+  github-token:
+    description: 'GitHub token for posting PR comments'
+    required: false
+    default: ${{ github.token }}
+outputs:
+  preview-url:
+    description: 'The preview URL for the uploaded build'
+  asset-id:
+    description: 'The Limrun asset ID'
+  asset-name:
+    description: 'The resolved asset name'
+branding:
+  icon: 'smartphone'
+  color: 'blue'
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

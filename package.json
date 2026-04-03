@@ -1,0 +1,19 @@
+{
+  "name": "preview-action",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "@limrun/api": "^0.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.7.0"
+  }
+}
